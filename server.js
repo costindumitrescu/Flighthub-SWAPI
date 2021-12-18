@@ -10,6 +10,6 @@ app.get('/api/people', (req,res) => {
   res.json(people);
 });
 
-const port = 8080;
+const port = 8000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
