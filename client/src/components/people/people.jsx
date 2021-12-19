@@ -10,7 +10,7 @@ class People extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/people')
+    fetch('/people')
     .then(res => res.json())
     .then(people => this.setState({people}, () => console.log('Customer fetched..' , people)));
   }
@@ -21,7 +21,7 @@ class People extends Component {
       <h2>People</h2>
       <ul>
         {this.state.people.map(people =>
-            <li key={people.id}>{people.firstName} {people.lastName}</li>
+            <li key={people.id}>{people.name} {people.gender}</li>
           )}
       </ul>
     </div>
