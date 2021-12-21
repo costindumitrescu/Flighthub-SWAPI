@@ -19,9 +19,6 @@ app.use((_, res, next) => {
   next();
 });
 
-
-
-
 app.get('/people', function(req, res, next) {
   request({
     uri: 'https://swapi.py4e.com/api/people',
@@ -40,6 +37,13 @@ app.get('/starships', function(req, res, next) {
   request({
     uri: 'https://swapi.py4e.com/api/starships',
 
+  }).pipe(res);
+});
+
+app.get('/people/:id', function(req, res, next) {
+  const { id } = req.params;
+  request({
+    uri: `https://swapi.py4e.com/api/people/${id}`
   }).pipe(res);
 });
 
