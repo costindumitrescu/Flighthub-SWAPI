@@ -6,6 +6,7 @@ import Home from './components/Home'
 import People from './components/People'
 import Planets from './components/Planets'
 import Starships from './components/Starships'
+import Search from './components/Search'
 
 
 
@@ -13,7 +14,7 @@ function App() {
 const [people, setPeople] = useState([]);
 const [planets, setPlanets] = useState([]);
 const [starships, setStarships] = useState([]);
-const [load, setLoad] = useState(true);
+const [search, setSearch] = useState('');
 
 useEffect(() => {
   fetch('http://localhost:8000/people')
@@ -34,10 +35,15 @@ useEffect(() => {
       setStarships(data.results)
     });
 
+    fetch('http://localhost:8000/people/:id')
+    .then(res => res.json())
+    .then(data => {
+      setSearch(data.results)
+    });
+
 }, []);
 
 
-  console.log(starships);
 
   return (
     <>
@@ -46,6 +52,9 @@ useEffect(() => {
         <Switch>
             <Route exact path="/">
               <Home/>
+            </Route>
+            <Route exact path="/search">
+              <Search/>
             </Route>
             <Route exact path="/people">
               <People data={people}/>

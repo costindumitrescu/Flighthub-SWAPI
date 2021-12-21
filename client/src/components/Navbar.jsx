@@ -20,7 +20,7 @@ function Navbar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/"
+                to="/search"
                 activeClassName="active"
                 onClick={handleClick}
                 input="text"
